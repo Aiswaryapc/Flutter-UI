@@ -6,7 +6,7 @@ class AppColors {
   static const Color black = Color(0xFF000000);
   static const Color purple = Color(0xFF6F1D46);
   static const Color buttonBlue = Color(0xFF289BE8);
-  static const Color mediumElectricBlue = Color(0xFF0D5D99);
+  static const Color bglight = Color(0xFFfbe3c1);
   static const Color oldSilver = Color(0xFF828282);
   static const Color slimyGreen = Color(0xFF0ED407);
   static const Color selectiveYellow = Color(0xFFFFBB01);

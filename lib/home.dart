@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
               begin: Alignment.topCenter,
 
               end: Alignment.center,
-              colors: [AppColors.bg, AppColors.white])),
+              colors: [AppColors.bglight, AppColors.white])),
       child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Center(
