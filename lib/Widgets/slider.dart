@@ -1,42 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:slidable_button/slidable_button.dart';
 import 'package:uitask/constants/colors.dart';
-class SliderPage extends StatefulWidget {
-  const SliderPage({Key? key}) : super(key: key);
+
+class SlidingPage extends StatefulWidget {
+  const SlidingPage({Key? key}) : super(key: key);
 
   @override
-  State<SliderPage> createState() => _SliderPageState();
+  State<SlidingPage> createState() => _SlidingPageState();
 }
 
-class _SliderPageState extends State<SliderPage> {
+class _SlidingPageState extends State<SlidingPage> {
   @override
-  Widget build(BuildContext context) {
-    int result=1;
-    return Row(mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text('Domestic Offers',style: TextStyle(fontWeight: FontWeight.w700,fontSize: 13,color: AppColors.purple.withOpacity( 0.35)),),
-        Padding(
-          padding:  EdgeInsets.symmetric(horizontal:2.h),
-          child: HorizontalSlidableButton(
-            width: 6.h,height: 3.h,
-            buttonWidth: 3.h,
-            color: AppColors.purple,
-            buttonColor: AppColors.white,
-            dismissible: false,
+  RangeValues values = RangeValues(1, 100);
+  RangeLabels labels = RangeLabels('1', "100");
+  int divisions = 5;
+  double _startValue = 20.0;
+  double _endValue = 90.0;
+  List strLabels = [];
 
-            onChanged: (position) {
-              setState(() {
-                if (position == SlidableButtonPosition.end) {
-                  result = 1;
-                } else {
-                  result = 2;
-                }
-              });
-            },
+  @override
+  void initState() {
+    super.initState();
+
+    strLabels = [
+      for (var i = 0; i <= values.end; i += (values.end ~/ divisions)) i
+    ];
+  }
+
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        RangeSlider(
+          min: 0.0,
+          max: 100.0,
+          activeColor: AppColors.purple,
+          inactiveColor: AppColors.gold,
+          values: values,
+          labels: labels,
+          onChanged: (value) {
+            print("START: ${value.start}, End: ${value.end}");
+
+            setState(() {
+              values = value;
+              labels = RangeLabels("${value.start.toInt().toString()}\$",
+                  "${value.start.toInt().toString()}\$");
+            });
+          },
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * .05),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children:[
+              SizedBox(width: 2.h),
+            Text("${values.start.toInt().toString()}\%",style: TextStyle(color: AppColors.purple
+              ),),
+              Text("${values.end.toInt().toString()}\%",style: TextStyle(color: AppColors.purple
+              ),),SizedBox(width: 2.h),
+          ]
           ),
         ),
-        Text('International Offers',style: TextStyle(fontWeight: FontWeight.w700,fontSize: 13,color: AppColors.purple),)
       ],
     );
   }

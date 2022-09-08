@@ -6,7 +6,7 @@ class AppTheme {
   static final theme = ThemeData(
       brightness: Brightness.light,
       primaryColor: AppColors.purple,
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.white,unselectedWidgetColor: AppColors.purple,
       //scaffoldBackgroundColor:AppColors.white,
       visualDensity: VisualDensity.adaptivePlatformDensity,
       textTheme:GoogleFonts.latoTextTheme(
