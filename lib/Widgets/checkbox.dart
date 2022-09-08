@@ -162,7 +162,7 @@ class _CheckedBoxPageState extends State<CheckedBoxPage> {
                   fontSize: 14,
                   color: AppColors.purple),
             ),
-            SizedBox(width: 9.h,)
+            SizedBox(width: 8.5.h,)
           ],
         ),
       ],
