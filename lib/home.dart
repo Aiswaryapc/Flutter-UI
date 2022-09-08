@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Padding(
                       padding:
-                          EdgeInsets.only(left: 38.h, right: 0.5.h, top: 0.3.h),
+                          EdgeInsets.only(left: 39.h, right: 0.5.h, top: 0.3.h),
                       child: ElevatedButton(
                         child: Center(
                             child: Icon(
